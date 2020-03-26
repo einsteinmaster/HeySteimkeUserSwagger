@@ -1,0 +1,155 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "HeySteimkeUser REST API",
+    "version" : "1.0.0",
+    "title" : "HeySteimkeUser",
+    "contact" : {
+      "name" : "Marius Schlueter",
+      "email" : "marius.schlueter@intecelektro.de"
+    }
+  },
+  "host" : "rkp.intecelektro.de:30000",
+  "basePath" : "/api",
+  "schemes" : [ "http", "https" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/users" : {
+      "get" : {
+        "summary" : "Returns ids of existing Users",
+        "operationId" : "getAvaiUserIds",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Successfully returning array of existing ids",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "type" : "integer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/{id}" : {
+      "get" : {
+        "summary" : "Returns Specific User by id",
+        "operationId" : "getUser",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Id of User to get",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Found User and returning",
+            "schema" : {
+              "$ref" : "#/definitions/User"
+            }
+          },
+          "404" : {
+            "description" : "User not found"
+          }
+        }
+      },
+      "put" : {
+        "summary" : "Replace existing User",
+        "operationId" : "replaceUser",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Id of User to get",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "in" : "body",
+          "name" : "user",
+          "description" : "User to replace",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/User"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success"
+          },
+          "404" : {
+            "description" : "Item not found"
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "Remove User",
+        "operationId" : "deleteUser",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Id of User to delete",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success"
+          },
+          "404" : {
+            "description" : "User not found"
+          }
+        }
+      }
+    },
+    "/user" : {
+      "post" : {
+        "summary" : "Add User",
+        "operationId" : "addUser",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "user",
+          "description" : "User to add",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/User"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "User" : {
+      "required" : [ "id" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "example" : 123,
+          "description" : "Identifier"
+        },
+        "state" : {
+          "type" : "string",
+          "example" : "user",
+          "description" : "State",
+          "enum" : [ "admin", "user", "guest" ]
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "Marius",
+          "description" : "Name of Item"
+        },
+        "workload" : {
+          "type" : "integer",
+          "example" : 30,
+          "description" : "workload done"
+        }
+      }
+    }
+  }
+}
