@@ -11,7 +11,7 @@
   },
   "host" : "rkp.intecelektro.de:30000",
   "basePath" : "/api",
-  "schemes" : [ "http", "https" ],
+  "schemes" : [ "http" ],
   "consumes" : [ "application/json" ],
   "produces" : [ "application/json" ],
   "paths" : {
