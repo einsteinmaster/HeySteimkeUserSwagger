@@ -142,7 +142,17 @@
         "name" : {
           "type" : "string",
           "example" : "Marius",
-          "description" : "Name of Item"
+          "description" : "Name of User"
+        },
+        "pw" : {
+          "type" : "string",
+          "example" : "1234",
+          "description" : "Password"
+        },
+        "email" : {
+          "type" : "string",
+          "example" : "hanswurst@web.de",
+          "description" : "email of user"
         },
         "workload" : {
           "type" : "integer",
