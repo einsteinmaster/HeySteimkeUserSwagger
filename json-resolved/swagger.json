@@ -9,7 +9,7 @@
       "email" : "marius.schlueter@intecelektro.de"
     }
   },
-  "host" : "rkp.intecelektro.de:30000",
+  "host" : "rkp.intecelektro.de:30002",
   "basePath" : "/api",
   "schemes" : [ "http" ],
   "consumes" : [ "application/json" ],
